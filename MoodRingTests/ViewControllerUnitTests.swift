@@ -9,7 +9,7 @@
 import XCTest
 @testable import MoodRing
 
-class MoodRingTests: XCTestCase {
+class ViewControllerUnitTests: XCTestCase {
     
     var viewController : ViewController!
     

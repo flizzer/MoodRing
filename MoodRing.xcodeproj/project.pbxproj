@@ -12,7 +12,7 @@
 		4F0B7F041FF1FD700007D88A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F021FF1FD700007D88A /* Main.storyboard */; };
 		4F0B7F061FF1FD700007D88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F051FF1FD700007D88A /* Assets.xcassets */; };
 		4F0B7F091FF1FD700007D88A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F071FF1FD700007D88A /* LaunchScreen.storyboard */; };
-		4F0B7F141FF1FD700007D88A /* MoodRingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F131FF1FD700007D88A /* MoodRingTests.swift */; };
+		4F0B7F141FF1FD700007D88A /* ViewControllerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F131FF1FD700007D88A /* ViewControllerUnitTests.swift */; };
 		4F0B7F1F1FF1FD700007D88A /* MoodRingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F1E1FF1FD700007D88A /* MoodRingUITests.swift */; };
 		4F0B7F241FF1FD700007D88A /* MoodRing WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4F0B7F231FF1FD700007D88A /* MoodRing WatchKit App.app */; };
 		4F0B7F2A1FF1FD700007D88A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F281FF1FD700007D88A /* Interface.storyboard */; };
@@ -22,6 +22,7 @@
 		4F0B7F3A1FF1FD700007D88A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F391FF1FD700007D88A /* ExtensionDelegate.swift */; };
 		4F0B7F3C1FF1FD700007D88A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3B1FF1FD700007D88A /* NotificationController.swift */; };
 		4F0B7F3E1FF1FD700007D88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3D1FF1FD700007D88A /* Assets.xcassets */; };
+		4F7D5F861FF4B8F200082118 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F281FF1FD700007D88A /* Interface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +90,7 @@
 		4F0B7F081FF1FD700007D88A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F0B7F0A1FF1FD700007D88A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F0B7F0F1FF1FD700007D88A /* MoodRingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodRingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F0B7F131FF1FD700007D88A /* MoodRingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRingTests.swift; sourceTree = "<group>"; };
+		4F0B7F131FF1FD700007D88A /* ViewControllerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUnitTests.swift; sourceTree = "<group>"; };
 		4F0B7F151FF1FD700007D88A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F0B7F1A1FF1FD700007D88A /* MoodRingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodRingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F0B7F1E1FF1FD700007D88A /* MoodRingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRingUITests.swift; sourceTree = "<group>"; };
@@ -147,6 +148,8 @@
 				4F0B7F1D1FF1FD700007D88A /* MoodRingUITests */,
 				4F0B7F271FF1FD700007D88A /* MoodRing WatchKit App */,
 				4F0B7F361FF1FD700007D88A /* MoodRing WatchKit Extension */,
+				4F7D5F881FF4C09000082118 /* MoodRingWatchKitExtensionTests */,
+				4F7D5F871FF4C05A00082118 /* MoodRingWatchKitAppUITests */,
 				4F0B7EFC1FF1FD700007D88A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -179,7 +182,7 @@
 		4F0B7F121FF1FD700007D88A /* MoodRingTests */ = {
 			isa = PBXGroup;
 			children = (
-				4F0B7F131FF1FD700007D88A /* MoodRingTests.swift */,
+				4F0B7F131FF1FD700007D88A /* ViewControllerUnitTests.swift */,
 				4F0B7F151FF1FD700007D88A /* Info.plist */,
 			);
 			path = MoodRingTests;
@@ -215,6 +218,20 @@
 				4F0B7F401FF1FD700007D88A /* PushNotificationPayload.apns */,
 			);
 			path = "MoodRing WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		4F7D5F871FF4C05A00082118 /* MoodRingWatchKitAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MoodRingWatchKitAppUITests;
+			sourceTree = "<group>";
+		};
+		4F7D5F881FF4C09000082118 /* MoodRingWatchKitExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MoodRingWatchKitExtensionTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F7D5F861FF4B8F200082118 /* Interface.storyboard in Resources */,
 				4F0B7F091FF1FD700007D88A /* LaunchScreen.storyboard in Resources */,
 				4F0B7F061FF1FD700007D88A /* Assets.xcassets in Resources */,
 				4F0B7F041FF1FD700007D88A /* Main.storyboard in Resources */,
@@ -423,7 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0B7F141FF1FD700007D88A /* MoodRingTests.swift in Sources */,
+				4F0B7F141FF1FD700007D88A /* ViewControllerUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
