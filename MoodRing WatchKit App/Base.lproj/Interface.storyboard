@@ -15,9 +15,16 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="MoodRing" customModuleProvider="target">
                     <items>
                         <label alignment="center" text="MoodRing" id="oBZ-tF-Tjs"/>
-                        <button width="1" alignment="left" verticalAlignment="center" title="What mood am I in?" id="6S5-ID-DOW"/>
+                        <button width="1" alignment="left" verticalAlignment="center" title="What mood am I in?" id="6S5-ID-DOW">
+                            <connections>
+                                <action selector="moodButtonPressed" destination="AgC-eL-Hgc" id="paW-3U-BoP"/>
+                            </connections>
+                        </button>
                         <label alignment="center" verticalAlignment="bottom" id="pLt-7D-bIo"/>
                     </items>
+                    <connections>
+                        <outlet property="moodLabel" destination="pLt-7D-bIo" id="Cox-1e-lti"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>

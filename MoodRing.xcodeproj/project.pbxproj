@@ -22,8 +22,19 @@
 		4F0B7F3A1FF1FD700007D88A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F391FF1FD700007D88A /* ExtensionDelegate.swift */; };
 		4F0B7F3C1FF1FD700007D88A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3B1FF1FD700007D88A /* NotificationController.swift */; };
 		4F0B7F3E1FF1FD700007D88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3D1FF1FD700007D88A /* Assets.xcassets */; };
-		4F7D5F861FF4B8F200082118 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F281FF1FD700007D88A /* Interface.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		4F7D5F8E1FF5EE7D00082118 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		4F0B7F101FF1FD700007D88A /* PBXContainerItemProxy */ = {
@@ -148,8 +159,6 @@
 				4F0B7F1D1FF1FD700007D88A /* MoodRingUITests */,
 				4F0B7F271FF1FD700007D88A /* MoodRing WatchKit App */,
 				4F0B7F361FF1FD700007D88A /* MoodRing WatchKit Extension */,
-				4F7D5F881FF4C09000082118 /* MoodRingWatchKitExtensionTests */,
-				4F7D5F871FF4C05A00082118 /* MoodRingWatchKitAppUITests */,
 				4F0B7EFC1FF1FD700007D88A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -220,20 +229,6 @@
 			path = "MoodRing WatchKit Extension";
 			sourceTree = "<group>";
 		};
-		4F7D5F871FF4C05A00082118 /* MoodRingWatchKitAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MoodRingWatchKitAppUITests;
-			sourceTree = "<group>";
-		};
-		4F7D5F881FF4C09000082118 /* MoodRingWatchKitExtensionTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MoodRingWatchKitExtensionTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,6 +242,7 @@
 				4F0B7F4A1FF1FD700007D88A /* Embed Watch Content */,
 			);
 			buildRules = (
+				4F7D5F8E1FF5EE7D00082118 /* PBXBuildRule */,
 			);
 			dependencies = (
 				4F0B7F261FF1FD700007D88A /* PBXTargetDependency */,
@@ -387,7 +383,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F7D5F861FF4B8F200082118 /* Interface.storyboard in Resources */,
 				4F0B7F091FF1FD700007D88A /* LaunchScreen.storyboard in Resources */,
 				4F0B7F061FF1FD700007D88A /* Assets.xcassets in Resources */,
 				4F0B7F041FF1FD700007D88A /* Main.storyboard in Resources */,

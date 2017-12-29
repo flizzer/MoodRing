@@ -8,10 +8,38 @@
 
 import WatchKit
 import Foundation
+import HealthKit
 
 
 class InterfaceController: WKInterfaceController {
 
+    var externalBodyTemperature = 0;
+    
+    @IBOutlet var moodLabel: WKInterfaceLabel!
+    
+    @IBAction func moodButtonPressed() {
+        
+        //todo:  what's the correct way to check for permission granted and then request if necessary -- bhd
+        //requestPermission()
+        
+//        if (!isHealthDataAvailable())
+//        {
+//
+//        }
+        externalBodyTemperature = getExternalBodyTemperature();
+        updateMoodLabel();
+    }
+    
+    func getExternalBodyTemperature() -> Int
+    {
+        return 0;
+    }
+    
+    func updateMoodLabel()
+    {
+        moodLabel.setText("\(externalBodyTemperature)");
+    }
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
