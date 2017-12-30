@@ -7,12 +7,52 @@
 //
 
 import UIKit
+import HealthKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let isAuthorized = requestAuthorizationToShare()
+        if (!isAuthorized)
+        {
+            let alert = UIAlertController(title:"Alert",
+                message: "Unauthorized!",
+                preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default
+                , handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                case .cancel:
+                    print("cancel")
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+        }
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func requestAuthorizationToShare() -> Bool {
+        let healthStore: HKHealthStore? = {
+            if HKHealthStore.isHealthDataAvailable() {
+                return HKHealthStore()
+            }
+            else {
+                return nil
+            }
+        }()
+        let bodyTemperature = NSSet(object: HKQuantityType
+            .quantityType(forIdentifier:
+                HKQuantityTypeIdentifier.bodyTemperature))
+        var isAuthorized = false
+        healthStore?.requestAuthorization(toShare: nil, read:
+        (bodyTemperature as! Set<HKObjectType>)) {
+            (success, error) -> Void in
+            isAuthorized = success
+        }
+        return isAuthorized
     }
 
     override func didReceiveMemoryWarning() {
