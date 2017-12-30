@@ -22,6 +22,7 @@
 		4F0B7F3A1FF1FD700007D88A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F391FF1FD700007D88A /* ExtensionDelegate.swift */; };
 		4F0B7F3C1FF1FD700007D88A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3B1FF1FD700007D88A /* NotificationController.swift */; };
 		4F0B7F3E1FF1FD700007D88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3D1FF1FD700007D88A /* Assets.xcassets */; };
+		4F927CF11FF750B100644AAB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F927CF01FF750B100644AAB /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -117,6 +118,9 @@
 		4F0B7F3D1FF1FD700007D88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F0B7F3F1FF1FD700007D88A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F0B7F401FF1FD700007D88A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		4F7D5F8F1FF71FF900082118 /* MoodRing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodRing.entitlements; sourceTree = "<group>"; };
+		4F927CF01FF750B100644AAB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		4F927CF21FF750B100644AAB /* MoodRing WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MoodRing WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F927CF11FF750B100644AAB /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +165,7 @@
 				4F0B7F271FF1FD700007D88A /* MoodRing WatchKit App */,
 				4F0B7F361FF1FD700007D88A /* MoodRing WatchKit Extension */,
 				4F0B7EFC1FF1FD700007D88A /* Products */,
+				4F7D5F901FF71FFA00082118 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +184,7 @@
 		4F0B7EFD1FF1FD700007D88A /* MoodRing */ = {
 			isa = PBXGroup;
 			children = (
+				4F7D5F8F1FF71FF900082118 /* MoodRing.entitlements */,
 				4F0B7EFE1FF1FD700007D88A /* AppDelegate.swift */,
 				4F0B7F001FF1FD700007D88A /* ViewController.swift */,
 				4F0B7F021FF1FD700007D88A /* Main.storyboard */,
@@ -219,6 +226,7 @@
 		4F0B7F361FF1FD700007D88A /* MoodRing WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4F927CF21FF750B100644AAB /* MoodRing WatchKit Extension.entitlements */,
 				4F0B7F371FF1FD700007D88A /* InterfaceController.swift */,
 				4F0B7F391FF1FD700007D88A /* ExtensionDelegate.swift */,
 				4F0B7F3B1FF1FD700007D88A /* NotificationController.swift */,
@@ -227,6 +235,14 @@
 				4F0B7F401FF1FD700007D88A /* PushNotificationPayload.apns */,
 			);
 			path = "MoodRing WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		4F7D5F901FF71FFA00082118 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F927CF01FF750B100644AAB /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +351,11 @@
 					4F0B7EFA1FF1FD700007D88A = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+						};
 					};
 					4F0B7F0E1FF1FD700007D88A = {
 						CreatedOnToolsVersion = 9.2;
@@ -353,6 +374,11 @@
 					4F0B7F311FF1FD700007D88A = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -622,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "MoodRing WatchKit Extension/MoodRing WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R3ZQV82X79;
 				INFOPLIST_FILE = "MoodRing WatchKit Extension/Info.plist";
@@ -640,6 +667,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "MoodRing WatchKit Extension/MoodRing WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R3ZQV82X79;
 				INFOPLIST_FILE = "MoodRing WatchKit Extension/Info.plist";
