@@ -14,16 +14,35 @@ import HealthKit
 class InterfaceController: WKInterfaceController {
 
     var externalBodyTemperature = "0"
+    let healthStore = HKHealthStore()
     
     @IBOutlet var moodLabel: WKInterfaceLabel!
     
     @IBAction func moodButtonPressed() {
+        getExternalBodyTemperature()
         updateMoodLabel();
     }
     
-    func getExternalBodyTemperature() -> Int
+    func getExternalBodyTemperature()
     {
-        return 0;
+        let bodyTemperatureQuery = buildBodyTemperatureQuery()
+        healthStore.execute(bodyTemperatureQuery)
+    }
+    
+    func buildBodyTemperatureQuery() -> HKSampleQuery
+    {
+        let bodyTemperature = HKQuantityType.quantityType(
+            forIdentifier: HKQuantityTypeIdentifier.bodyTemperature)
+        return HKSampleQuery(sampleType: bodyTemperature!,
+                             predicate: nil,
+                             limit: 1,
+                             sortDescriptors: nil)
+        { [unowned self] (query, results, error) in
+            if let results = results as? [HKQuantitySample] {
+                self.externalBodyTemperature = "\(results[0].quantity)"
+            }
+            
+        }
     }
     
     func updateMoodLabel()
@@ -33,35 +52,8 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-//        let isAuthorized = requestAuthorizationToShare()
-//        if (!isAuthorized)
-//        {
-//            moodLabel.setText("Not Authorized");
-//        }
         
-        // Configure interface objects here.
     }
-    
-//    func requestAuthorizationToShare() -> Bool {
-//        let healthStore: HKHealthStore? = {
-//            if HKHealthStore.isHealthDataAvailable() {
-//                return HKHealthStore()
-//            }
-//            else {
-//                return nil
-//            }
-//        }()
-//        let bodyTemperature = NSSet(object: HKQuantityType
-//            .quantityType(forIdentifier:
-//            HKQuantityTypeIdentifier.bodyTemperature))
-//        var isAuthorized = false
-//        healthStore?.requestAuthorization(toShare: nil, read:
-//            (bodyTemperature as! Set<HKObjectType>)) {
-//                (success, error) -> Void in
-//                isAuthorized = success
-//            }
-//        return isAuthorized
-//    }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
