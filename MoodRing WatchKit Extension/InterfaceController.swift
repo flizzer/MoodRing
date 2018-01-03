@@ -13,41 +13,47 @@ import HealthKit
 
 class InterfaceController: WKInterfaceController {
 
-    var externalBodyTemperature = "0"
+    var currentHeartRate = ""
+    //var currentHeartRateResults = HKSampleType
     let healthStore = HKHealthStore()
     
     @IBOutlet var moodLabel: WKInterfaceLabel!
     
     @IBAction func moodButtonPressed() {
-        getExternalBodyTemperature()
+        getCurrentHeartRate()
         updateMoodLabel();
     }
     
-    func getExternalBodyTemperature()
+    func getCurrentHeartRate()
     {
-        let bodyTemperatureQuery = buildBodyTemperatureQuery()
-        healthStore.execute(bodyTemperatureQuery)
+        let currentHeartRateQuery = buildCurrentHeartRateQuery()
+        healthStore.execute(currentHeartRateQuery)
     }
     
-    func buildBodyTemperatureQuery() -> HKSampleQuery
+    func buildCurrentHeartRateQuery() -> HKSampleQuery
     {
-        let bodyTemperature = HKQuantityType.quantityType(
-            forIdentifier: HKQuantityTypeIdentifier.bodyTemperature)
-        return HKSampleQuery(sampleType: bodyTemperature!,
+        let heartRateQuantityType = HKQuantityType.quantityType(
+            forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        return HKSampleQuery(sampleType: heartRateQuantityType!,
                              predicate: nil,
                              limit: 1,
                              sortDescriptors: nil)
         { [unowned self] (query, results, error) in
-            if let results = results as? [HKQuantitySample] {
-                self.externalBodyTemperature = "\(results[0].quantity)"
+            guard let mostRecentResult = results!.first as? HKQuantitySample else {
+                return
             }
+                //if let result = results.first as? [HKQuantitySample] {
+                //self.currentHeartRateResults = results
+                self.currentHeartRate =
+            "\(String(describing: Int(mostRecentResult.quantity.doubleValue(for: HKUnit.init(from: "count/min")))))  BPM"
             
-        }
+            
+            }
     }
     
     func updateMoodLabel()
     {
-        moodLabel.setText(externalBodyTemperature);
+        moodLabel.setText(currentHeartRate);
     }
     
     override func awake(withContext context: Any?) {

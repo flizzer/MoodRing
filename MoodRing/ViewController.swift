@@ -43,12 +43,12 @@ class ViewController: UIViewController {
                 return nil
             }
         }()
-        let bodyTemperature = NSSet(object: HKQuantityType
+        let heartRateQuantityType = NSSet(object: HKQuantityType
             .quantityType(forIdentifier:
-                HKQuantityTypeIdentifier.bodyTemperature))
+                HKQuantityTypeIdentifier.heartRate))
         var isAuthorized = false
         healthStore?.requestAuthorization(toShare: nil, read:
-        (bodyTemperature as! Set<HKObjectType>)) {
+        (heartRateQuantityType as! Set<HKObjectType>)) {
             (success, error) -> Void in
             isAuthorized = success
         }
