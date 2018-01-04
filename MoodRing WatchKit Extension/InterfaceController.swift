@@ -13,8 +13,7 @@ import HealthKit
 
 class InterfaceController: WKInterfaceController {
 
-    var currentHeartRate = ""
-    //var currentHeartRateResults = HKSampleType
+    var mostRecentHeartRate = ""
     let healthStore = HKHealthStore()
     
     @IBOutlet var moodLabel: WKInterfaceLabel!
@@ -26,34 +25,43 @@ class InterfaceController: WKInterfaceController {
     
     func getCurrentHeartRate()
     {
-        let currentHeartRateQuery = buildCurrentHeartRateQuery()
-        healthStore.execute(currentHeartRateQuery)
-    }
-    
-    func buildCurrentHeartRateQuery() -> HKSampleQuery
-    {
-        let heartRateQuantityType = HKQuantityType.quantityType(
-            forIdentifier: HKQuantityTypeIdentifier.heartRate)
-        return HKSampleQuery(sampleType: heartRateQuantityType!,
-                             predicate: nil,
-                             limit: 1,
-                             sortDescriptors: nil)
-        { [unowned self] (query, results, error) in
-            guard let mostRecentResult = results!.first as? HKQuantitySample else {
+        getMostRecentHeartRateSample() { (mostRecentHeartRateSample, error) in
+            guard let mostRecentHeartRateSample = mostRecentHeartRateSample else {
+                if let error = error {
+                    return
+                }
                 return
             }
-                //if let result = results.first as? [HKQuantitySample] {
-                //self.currentHeartRateResults = results
-                self.currentHeartRate =
-            "\(String(describing: Int(mostRecentResult.quantity.doubleValue(for: HKUnit.init(from: "count/min")))))  BPM"
-            
-            
+            self.mostRecentHeartRate = "\(String(describing: Int(mostRecentHeartRateSample.quantity.doubleValue(for: HKUnit.init(from: "count/min")))))  BPM"
+        }
+    }
+    
+    func getMostRecentHeartRateSample(completion: @escaping (HKQuantitySample?, Error?) -> Void)
+    {
+            let heartRateQuantityType = HKQuantityType.quantityType(
+                forIdentifier: HKQuantityTypeIdentifier.heartRate)
+            let mostRecentHeartRateQuery = HKSampleQuery(sampleType: heartRateQuantityType!,
+                                 predicate: nil,
+                                 limit: 1,
+                                 sortDescriptors: nil)
+            { (query, results, error) in
+    
+                DispatchQueue.main.async {
+    
+                    guard let mostRecentResult = results!.first as? HKQuantitySample else {
+                        completion(nil, error)
+                        return
+                    }
+                    
+                    completion(mostRecentResult , nil)
+                }
             }
+        healthStore.execute(mostRecentHeartRateQuery)
     }
     
     func updateMoodLabel()
     {
-        moodLabel.setText(currentHeartRate);
+        moodLabel.setText(mostRecentHeartRate);
     }
     
     override func awake(withContext context: Any?) {
