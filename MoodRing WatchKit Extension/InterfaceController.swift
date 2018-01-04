@@ -28,7 +28,7 @@ class InterfaceController: WKInterfaceController {
         getMostRecentHeartRateSample() { (mostRecentHeartRateSample, error) in
             guard let mostRecentHeartRateSample = mostRecentHeartRateSample else {
                 if let error = error {
-                    return
+                    print(error)
                 }
                 return
             }
@@ -66,6 +66,7 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        moodLabel.setText("")
         
     }
     
