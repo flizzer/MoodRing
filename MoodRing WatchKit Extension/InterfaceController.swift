@@ -25,8 +25,10 @@ class InterfaceController: WKInterfaceController {
     
     func getCurrentHeartRate()
     {
-        getMostRecentHeartRateSample() { (mostRecentHeartRateSample, error) in
-            guard let mostRecentHeartRateSample = mostRecentHeartRateSample else {
+        getMostRecentHeartRateSample() { (mostRecentHeartRateSample,
+            error) in
+            guard let mostRecentHeartRateSample =
+                mostRecentHeartRateSample else {
                 if let error = error {
                     print(error)
                 }
@@ -36,26 +38,36 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
-    func getMostRecentHeartRateSample(completion: @escaping (HKQuantitySample?, Error?) -> Void)
+    func getMostRecentHeartRateSample(completion: @escaping (
+        HKQuantitySample?, Error?) -> Void)
     {
-            let heartRateQuantityType = HKQuantityType.quantityType(
-                forIdentifier: HKQuantityTypeIdentifier.heartRate)
-            let mostRecentHeartRateQuery = HKSampleQuery(sampleType: heartRateQuantityType!,
-                                 predicate: nil,
-                                 limit: 1,
-                                 sortDescriptors: nil)
-            { (query, results, error) in
-    
-                DispatchQueue.main.async {
-    
-                    guard let mostRecentResult = results!.first as? HKQuantitySample else {
-                        completion(nil, error)
-                        return
-                    }
-                    
-                    completion(mostRecentResult , nil)
+        let heartRateQuantityType = HKQuantityType.quantityType(
+            forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        let mostRecentResultPredicate = HKQuery
+            .predicateForSamples(
+                withStart: Date.distantPast
+                , end: Date()
+                , options: .strictEndDate)
+        let sortDescriptors = NSSortDescriptor(
+            key: HKSampleSortIdentifierStartDate, ascending: false)
+        let mostRecentHeartRateQuery = HKSampleQuery(
+            sampleType: heartRateQuantityType!,
+            predicate: mostRecentResultPredicate,
+            limit: 1,
+            sortDescriptors: [sortDescriptors])
+        { (query, results, error) in
+            
+            DispatchQueue.main.async {
+                
+                guard let mostRecentResult = results!.first
+                    as? HKQuantitySample else {
+                    completion(nil, error)
+                    return
                 }
+                
+                completion(mostRecentResult , nil)
             }
+        }
         healthStore.execute(mostRecentHeartRateQuery)
     }
     
