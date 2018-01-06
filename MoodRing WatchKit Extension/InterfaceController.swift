@@ -19,11 +19,10 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var moodLabel: WKInterfaceLabel!
     
     @IBAction func moodButtonPressed() {
-        getCurrentHeartRate()
-        updateMoodLabel();
+        getCurrentHeartRateAndDisplay()
     }
     
-    func getCurrentHeartRate()
+    func getCurrentHeartRateAndDisplay()
     {
         getMostRecentHeartRateSample() { (mostRecentHeartRateSample,
             error) in
@@ -35,6 +34,7 @@ class InterfaceController: WKInterfaceController {
                 return
             }
             self.mostRecentHeartRate = "\(String(describing: Int(mostRecentHeartRateSample.quantity.doubleValue(for: HKUnit.init(from: "count/min")))))  BPM"
+            self.updateMoodLabel()
         }
     }
     
@@ -64,7 +64,6 @@ class InterfaceController: WKInterfaceController {
                     completion(nil, error)
                     return
                 }
-                
                 completion(mostRecentResult , nil)
             }
         }
