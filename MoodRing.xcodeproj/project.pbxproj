@@ -23,7 +23,10 @@
 		4F0B7F3C1FF1FD700007D88A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3B1FF1FD700007D88A /* NotificationController.swift */; };
 		4F0B7F3E1FF1FD700007D88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0B7F3D1FF1FD700007D88A /* Assets.xcassets */; };
 		4F2828691FF8219F0075D123 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2828681FF8219F0075D123 /* HealthKit.framework */; };
+		4F2C19752002797B009D2C6C /* HeartRateToMoodConverterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C19732002797B009D2C6C /* HeartRateToMoodConverterUnitTests.swift */; };
 		4F927CF11FF750B100644AAB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F927CF01FF750B100644AAB /* HealthKit.framework */; };
+		4FC2E9B7200132F800613E32 /* HeartRateToMoodConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2E9B6200132F800613E32 /* HeartRateToMoodConverter.swift */; };
+		4FC2E9BE20013B5500613E32 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2E9BD20013B5500613E32 /* Mood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -120,9 +123,12 @@
 		4F0B7F3F1FF1FD700007D88A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F0B7F401FF1FD700007D88A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		4F2828681FF8219F0075D123 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		4F2C19732002797B009D2C6C /* HeartRateToMoodConverterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateToMoodConverterUnitTests.swift; sourceTree = "<group>"; };
 		4F7D5F8F1FF71FF900082118 /* MoodRing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodRing.entitlements; sourceTree = "<group>"; };
 		4F927CF01FF750B100644AAB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		4F927CF21FF750B100644AAB /* MoodRing WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MoodRing WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		4FC2E9B6200132F800613E32 /* HeartRateToMoodConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateToMoodConverter.swift; sourceTree = "<group>"; };
+		4FC2E9BD20013B5500613E32 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,7 @@
 				4F0B7F1D1FF1FD700007D88A /* MoodRingUITests */,
 				4F0B7F271FF1FD700007D88A /* MoodRing WatchKit App */,
 				4F0B7F361FF1FD700007D88A /* MoodRing WatchKit Extension */,
+				4FC2E9B82001382100613E32 /* MoodRing WatchKit Extension Unit Tests */,
 				4F0B7EFC1FF1FD700007D88A /* Products */,
 				4F7D5F901FF71FFA00082118 /* Frameworks */,
 			);
@@ -236,6 +243,8 @@
 				4F0B7F3D1FF1FD700007D88A /* Assets.xcassets */,
 				4F0B7F3F1FF1FD700007D88A /* Info.plist */,
 				4F0B7F401FF1FD700007D88A /* PushNotificationPayload.apns */,
+				4FC2E9B6200132F800613E32 /* HeartRateToMoodConverter.swift */,
+				4FC2E9BD20013B5500613E32 /* Mood.swift */,
 			);
 			path = "MoodRing WatchKit Extension";
 			sourceTree = "<group>";
@@ -247,6 +256,14 @@
 				4F927CF01FF750B100644AAB /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FC2E9B82001382100613E32 /* MoodRing WatchKit Extension Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4F2C19732002797B009D2C6C /* HeartRateToMoodConverterUnitTests.swift */,
+			);
+			path = "MoodRing WatchKit Extension Unit Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,9 +499,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC2E9BE20013B5500613E32 /* Mood.swift in Sources */,
+				4F2C19752002797B009D2C6C /* HeartRateToMoodConverterUnitTests.swift in Sources */,
 				4F0B7F3C1FF1FD700007D88A /* NotificationController.swift in Sources */,
 				4F0B7F3A1FF1FD700007D88A /* ExtensionDelegate.swift in Sources */,
 				4F0B7F381FF1FD700007D88A /* InterfaceController.swift in Sources */,
+				4FC2E9B7200132F800613E32 /* HeartRateToMoodConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +615,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -644,6 +665,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

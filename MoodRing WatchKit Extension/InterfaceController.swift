@@ -13,8 +13,9 @@ import HealthKit
 
 class InterfaceController: WKInterfaceController {
 
-    var mostRecentHeartRate = ""
+    var mostRecentHeartRate = 0
     let healthStore = HKHealthStore()
+    var mood = Mood()
     
     @IBOutlet var moodLabel: WKInterfaceLabel!
     
@@ -33,8 +34,9 @@ class InterfaceController: WKInterfaceController {
                 }
                 return
             }
-            self.mostRecentHeartRate = "\(String(describing: Int(mostRecentHeartRateSample.quantity.doubleValue(for: HKUnit.init(from: "count/min")))))  BPM"
-            self.updateMoodLabel()
+            self.mostRecentHeartRate = Int(mostRecentHeartRateSample.quantity.doubleValue(for: HKUnit.init(from: "count/min")))
+            self.convertHeartRateToMood()
+            self.updateUI()
         }
     }
     
@@ -70,9 +72,16 @@ class InterfaceController: WKInterfaceController {
         healthStore.execute(mostRecentHeartRateQuery)
     }
     
-    func updateMoodLabel()
+    func updateUI()
     {
-        moodLabel.setText(mostRecentHeartRate);
+        moodLabel.setText("\(mood.description)");
+    }
+    
+    func convertHeartRateToMood()
+    {
+        let heartRateToMoodConverter = HeartRateToMoodConverter()
+        mood = heartRateToMoodConverter.convert(
+            mostRecentHeartRate)
     }
     
     override func awake(withContext context: Any?) {
