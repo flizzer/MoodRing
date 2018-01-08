@@ -12,7 +12,6 @@ import UIKit
 class HeartRateToMoodConverter {
     
     var mood = Mood()
-    //var heartRate = 0
     
     func convert(_ heartRate: Int) -> Mood {
         switch heartRate {
@@ -31,7 +30,7 @@ class HeartRateToMoodConverter {
             case 111...120:
                 mood = Mood(description: "Nervous", color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))
             case 121...130:
-                mood = Mood(description: "Unsettled", color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+                mood = Mood(description: "Stressed", color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
             default:
                 mood = Mood(description: "Check Your Pulse!!!", color: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1))
         }
